@@ -86,7 +86,7 @@ public class FreqLetterClass {
     }
 
    
-    public static double chiSquareAgainstEnglish(String ciferteksti) {
+    public static double CharIndSquareAgEnglish(String ciferteksti) {
         ciferteksti = ciferteksti.replaceAll("[^a-zA-Z]", "");
          int[] charCount = FreqLetterClass.countChar(ciferteksti);
        

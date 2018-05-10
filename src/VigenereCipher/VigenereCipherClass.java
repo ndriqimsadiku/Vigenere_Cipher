@@ -128,7 +128,7 @@ public class VigenereCipherClass {
          int shiftimi = 0;
          double maks = Integer.MAX_VALUE;
          for (int i = 0; i < FreqLetterClass.alfabeti; i++) {
-              double tempMaksimumi = FreqLetterClass.chiSquareAgainstEnglish(decryptCaesar(ciferteksti, i));
+              double tempMaksimumi = FreqLetterClass.CharIndSquareAgEnglish(decryptCaesar(ciferteksti, i));
               if (tempMaksimumi < maks) {
                  maks = tempMaksimumi;
                  shiftimi = i;
