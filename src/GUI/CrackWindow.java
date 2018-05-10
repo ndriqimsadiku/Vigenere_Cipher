@@ -48,16 +48,15 @@ public class CrackWindow {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
-		
 		JTextArea txtCipherCrack = new JTextArea();
-		txtCipherCrack.setFont(new Font("Monospaced", Font.PLAIN, 16));
+		txtCipherCrack.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtCipherCrack.setBounds(36, 140, 438, 100);
 		frame.getContentPane().add(txtCipherCrack);
 		txtCipherCrack.setLineWrap(true);
 		txtCipherCrack.setWrapStyleWord(true);
 		
 		JTextArea txtPlainTextCrack = new JTextArea();
-		txtPlainTextCrack.setFont(new Font("Monospaced", Font.PLAIN, 16));
+		txtPlainTextCrack.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtPlainTextCrack.setBounds(36, 370, 438, 100);
 		frame.getContentPane().add(txtPlainTextCrack);
 		txtPlainTextCrack.setLineWrap(true);
@@ -98,10 +97,10 @@ public class CrackWindow {
 					}
 					
 					
-				    String key = VigenereCipherClass.calculateKey(TextToCrack);
-				    String plainText = VigenereCipherClass.decrypt(TextToCrack, key);
-				    txtPlainTextCrack.setText(plainText);
-				    txtCelesiCrack.setText(key);		
+				   // String key = VigenereCipherClass.calculateKey(TextToCrack);
+				//    String plainText = VigenereCipherClass.decrypt(TextToCrack, key);
+				 //   txtPlainTextCrack.setText(plainText);
+				   // txtCelesiCrack.setText(key);		
 					
 				}
 				

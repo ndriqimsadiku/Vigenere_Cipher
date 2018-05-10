@@ -10,7 +10,7 @@ public class VigenereCipherClass {
             throw new IllegalArgumentException("Invalid key, it must be one, or more characters in range from a to z");
        
         plaintexti = plaintexti.replaceAll("[^a-zA-Z]", "").toUpperCase();        
-        celesi = StringUtils.repeatString(celesi, plaintexti.length()).toUpperCase();
+        //celesi = StringUtilClass.repeatString(celesi, plaintexti.length()).toUpperCase();
 
         StringBuilder ciphertext = new StringBuilder();
         for (int i = 0; i < plaintexti.length(); i++) {            
@@ -28,7 +28,7 @@ public class VigenereCipherClass {
             throw new IllegalArgumentException("Invalid key, it must be one, or more characters in range from a to z");
        
         cipherteksti = cipherteksti.replaceAll("[^a-zA-Z]", "").toUpperCase();       
-        celesi = StringUtils.repeatString(celesi, cipherteksti.length()).toUpperCase();
+       // celesi = StringUtilClass.repeatString(celesi, cipherteksti.length()).toUpperCase();
 
         StringBuilder plaintext = new StringBuilder();
         for (int i = 0; i < cipherteksti.length(); i++) {            
@@ -50,38 +50,38 @@ public class VigenereCipherClass {
 
         for (int i = 2; i < maximalLenOfKey; i++) {
             
-            List<String> stringsNeIntervalin = StringUtils.getAllStringsAtInterval(ciphertexti, i);
+           // List<String> stringsNeIntervalin = StringUtilClass.getAllStringsAtInterval(ciphertexti, i);
             
-            double tempIndexofC = stringsNeIntervalin.stream()
-                    
-                    .mapToDouble(FreqLetter::indexOfCoincidence)
-                    
-                    .average().getAsDouble();
-            
-            if (FreqLetter.closeToEng(tempIndexofC))
-                return i;
+//            double tempIndexofC = stringsNeIntervalin.stream()
+//                    
+//                    .mapToDouble(FreqLetterClass::indexOfCoincidence)
+//                    
+//                    .average().getAsDouble();
+//            
+//            if (FreqLetterClass.closeToEng(tempIndexofC))
+//                return i;
         }
 
         return -1;
     }
    
-    public static String calculateKey(String ciphertext) {
-        int lengthofK = CalcBestGuessLenOfKey(ciphertext);
+   // public static String calculateKey(String ciphertext) {
+      //  int lengthofK = CalcBestGuessLenOfKey(ciphertext);
         
-        if (lengthofK == -1) return null;
+     //  if (lengthofK == -1) return null;
         
-        List<String> caesarCipherStrings = StringUtils.getAllStringsAtInterval(ciphertext, lengthofK);
-        StringBuilder celesi = new StringBuilder();
+        //List<String> caesarCipherStrings = StringUtilClass.getAllStringsAtInterval(ciphertext, lengthofK);
+      //  StringBuilder celesi = new StringBuilder();
         
-        for (String caesarCipherTxt : caesarCipherStrings) {            
-            int Cshift = calculateShiftCaesar(caesarCipherTxt);            
-            char VleraChar = (char) (Cshift + 'A');            
-            celesi.append(VleraChar);
-        }
-
-        return celesi.toString();
-    }
-    
+        //for (String caesarCipherTxt : caesarCipherStrings) {            
+            //int Cshift = calculateShiftCaesar(caesarCipherTxt);            
+//            char VleraChar = (char) (Cshift + 'A');            
+//            celesi.append(VleraChar);
+//        }
+//
+//        return celesi.toString();
+//    }
+//    
     
     
     public static String decryptCaesar(String ciferteksti, int shifti) {
@@ -93,7 +93,7 @@ public class VigenereCipherClass {
              
              pozicioni -= shifti;
              
-             pozicioni = Math.floorMod(pozicioni, FreqLetter.ALPHABET_COUNT);
+             //pozicioni = Math.floorMod(pozicioni, FreqLetterClass.ALPHABET_COUNT);
              
              pozicioni += 'A';
              plainteksti.append((char) pozicioni);
@@ -110,7 +110,7 @@ public class VigenereCipherClass {
           
           pozicioni += shifti;
          
-          pozicioni = Math.floorMod(pozicioni, FreqLetter.ALPHABET_COUNT);
+        //  pozicioni = Math.floorMod(pozicioni, FreqLetterClass.ALPHABET_COUNT);
           
           pozicioni += 'A';
           ciferteksti.append((char) pozicioni);
@@ -127,13 +127,13 @@ public class VigenereCipherClass {
     	 ciferteksti = ciferteksti.replaceAll("[^a-zA-Z]", "");
          int shiftimi = 0;
          double maks = Integer.MAX_VALUE;
-         for (int i = 0; i < FreqLetter.ALPHABET_COUNT; i++) {
-              double tempMaksimumi = FreqLetter.chiSquareAgainstEnglish(decryptCaesar(ciferteksti, i));
-              if (tempMaksimumi < maks) {
-                 maks = tempMaksimumi;
-                 shiftimi = i;
-             }
-         }
+//         for (int i = 0; i < FreqLetterClass.ALPHABET_COUNT; i++) {
+//              double tempMaksimumi = FreqLetterClass.chiSquareAgainstEnglish(decryptCaesar(ciferteksti, i));
+//              if (tempMaksimumi < maks) {
+//                 maks = tempMaksimumi;
+//                 shiftimi = i;
+//             }
+//         }
          return shiftimi;
 
     }
