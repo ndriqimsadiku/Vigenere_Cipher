@@ -97,10 +97,10 @@ public class CrackWindow {
 					}
 					
 					
-				   // String key = VigenereCipherClass.calculateKey(TextToCrack);
-				//    String plainText = VigenereCipherClass.decrypt(TextToCrack, key);
-				 //   txtPlainTextCrack.setText(plainText);
-				   // txtCelesiCrack.setText(key);		
+				    String key = VigenereCipherClass.calculateKey(TextToCrack);
+				   String plainText = VigenereCipherClass.decrypt(TextToCrack, key);
+				    txtPlainTextCrack.setText(plainText);
+				    txtCelesiCrack.setText(key);		
 					
 				}
 				
