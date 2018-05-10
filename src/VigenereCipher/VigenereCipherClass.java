@@ -10,7 +10,7 @@ public class VigenereCipherClass {
             throw new IllegalArgumentException("Invalid key, it must be one, or more characters in range from a to z");
        
         plaintexti = plaintexti.replaceAll("[^a-zA-Z]", "").toUpperCase();        
-        //celesi = StringUtilClass.repeatString(celesi, plaintexti.length()).toUpperCase();
+        celesi = StringUtilClass.rptString(celesi, plaintexti.length()).toUpperCase();
 
         StringBuilder ciphertext = new StringBuilder();
         for (int i = 0; i < plaintexti.length(); i++) {            
@@ -25,10 +25,10 @@ public class VigenereCipherClass {
     public static String decrypt(String cipherteksti, String celesi) {
        
         if (celesi == null || !celesi.matches("[a-zA-Z]+"))
-            throw new IllegalArgumentException("Invalid key, it must be one, or more characters in range from a to z");
+            throw new IllegalArgumentException("Key must have one, or more characters in range from a to z");
        
         cipherteksti = cipherteksti.replaceAll("[^a-zA-Z]", "").toUpperCase();       
-       // celesi = StringUtilClass.repeatString(celesi, cipherteksti.length()).toUpperCase();
+        celesi = StringUtilClass.rptString(celesi, cipherteksti.length()).toUpperCase();
 
         StringBuilder plaintext = new StringBuilder();
         for (int i = 0; i < cipherteksti.length(); i++) {            
@@ -50,7 +50,7 @@ public class VigenereCipherClass {
 
         for (int i = 2; i < maximalLenOfKey; i++) {
             
-           // List<String> stringsNeIntervalin = StringUtilClass.getAllStringsAtInterval(ciphertexti, i);
+           // List<String> stringsNeIntervalin = StringUtilClass.StrsAtInterval(ciphertexti, i);
             
 //            double tempIndexofC = stringsNeIntervalin.stream()
 //                    
@@ -65,24 +65,24 @@ public class VigenereCipherClass {
         return -1;
     }
    
-   // public static String calculateKey(String ciphertext) {
-      //  int lengthofK = CalcBestGuessLenOfKey(ciphertext);
+    public static String calculateKey(String ciphertext) {
+        int lengthofK = CalcBestGuessLenOfKey(ciphertext);
         
-     //  if (lengthofK == -1) return null;
+      if (lengthofK == -1) return null;
         
-        //List<String> caesarCipherStrings = StringUtilClass.getAllStringsAtInterval(ciphertext, lengthofK);
-      //  StringBuilder celesi = new StringBuilder();
+        List<String> caesarCipherStrings = StringUtilClass.StrsAtInterval(ciphertext, lengthofK);
+      StringBuilder celesi = new StringBuilder();
         
-        //for (String caesarCipherTxt : caesarCipherStrings) {            
-            //int Cshift = calculateShiftCaesar(caesarCipherTxt);            
-//            char VleraChar = (char) (Cshift + 'A');            
-//            celesi.append(VleraChar);
-//        }
-//
-//        return celesi.toString();
-//    }
-//    
+        for (String caesarCipherTxt : caesarCipherStrings) {            
+            int Cshift = calculateShiftCaesar(caesarCipherTxt);            
+           char VleraChar = (char) (Cshift + 'A');            
+         celesi.append(VleraChar);
+     }
+
+        return celesi.toString();
+    }
     
+   
     
     public static String decryptCaesar(String ciferteksti, int shifti) {
         
