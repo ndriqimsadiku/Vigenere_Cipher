@@ -50,16 +50,16 @@ public class VigenereCipherClass {
 
         for (int i = 2; i < maximalLenOfKey; i++) {
             
-           // List<String> stringsNeIntervalin = StringUtilClass.StrsAtInterval(ciphertexti, i);
+            List<String> stringsNeIntervalin = StringUtilClass.StrsAtInterval(ciphertexti, i);
             
-//            double tempIndexofC = stringsNeIntervalin.stream()
-//                    
-//                    .mapToDouble(FreqLetterClass::indexOfCoincidence)
-//                    
-//                    .average().getAsDouble();
-//            
-//            if (FreqLetterClass.closeToEng(tempIndexofC))
-//                return i;
+            double tempIndexofC = stringsNeIntervalin.stream()
+                    
+                   .mapToDouble(FreqLetterClass::indeksC)
+                    
+                    .average().getAsDouble();
+            
+            if (FreqLetterClass.closeToEng(tempIndexofC))
+                return i;
         }
 
         return -1;
@@ -93,7 +93,7 @@ public class VigenereCipherClass {
              
              pozicioni -= shifti;
              
-             //pozicioni = Math.floorMod(pozicioni, FreqLetterClass.ALPHABET_COUNT);
+             pozicioni = Math.floorMod(pozicioni, FreqLetterClass.alfabeti);
              
              pozicioni += 'A';
              plainteksti.append((char) pozicioni);
@@ -110,7 +110,7 @@ public class VigenereCipherClass {
           
           pozicioni += shifti;
          
-        //  pozicioni = Math.floorMod(pozicioni, FreqLetterClass.ALPHABET_COUNT);
+         pozicioni = Math.floorMod(pozicioni, FreqLetterClass.alfabeti);
           
           pozicioni += 'A';
           ciferteksti.append((char) pozicioni);
@@ -127,13 +127,13 @@ public class VigenereCipherClass {
     	 ciferteksti = ciferteksti.replaceAll("[^a-zA-Z]", "");
          int shiftimi = 0;
          double maks = Integer.MAX_VALUE;
-//         for (int i = 0; i < FreqLetterClass.ALPHABET_COUNT; i++) {
-//              double tempMaksimumi = FreqLetterClass.chiSquareAgainstEnglish(decryptCaesar(ciferteksti, i));
-//              if (tempMaksimumi < maks) {
-//                 maks = tempMaksimumi;
-//                 shiftimi = i;
-//             }
-//         }
+         for (int i = 0; i < FreqLetterClass.alfabeti; i++) {
+              double tempMaksimumi = FreqLetterClass.chiSquareAgainstEnglish(decryptCaesar(ciferteksti, i));
+              if (tempMaksimumi < maks) {
+                 maks = tempMaksimumi;
+                 shiftimi = i;
+             }
+         }
          return shiftimi;
 
     }

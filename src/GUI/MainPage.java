@@ -45,7 +45,7 @@ public class MainPage {
 		btnEnkDekr.setFont(new Font("Arial", Font.PLAIN, 18));
 		btnEnkDekr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//EnkriptoDekripto.main(null);
+				EnkriptoDekripto.main(null);
 			}
 		});
 		btnEnkDekr.setBounds(66, 153, 251, 83);
